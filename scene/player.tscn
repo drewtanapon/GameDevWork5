@@ -1,15 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3mbcec7yqvyk"]
+[gd_scene load_steps=4 format=3 uid="uid://b3mbcec7yqvyk"]
 
+[ext_resource type="Script" uid="uid://g8sqo4ak5bly" path="res://script/player.gd" id="1_hjaqi"]
 [ext_resource type="PackedScene" uid="uid://cqhfm1s2ylq07" path="res://asset/art/player.glb" id="1_xo3ru"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_hjaqi"]
-radius = 0.9
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xo3ru"]
+height = 1.0
+radius = 1.0
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
+script = ExtResource("1_hjaqi")
 
 [node name="Pivot" type="Node3D" parent="."]
 
 [node name="player" parent="Pivot" instance=ExtResource("1_xo3ru")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_hjaqi")
+shape = SubResource("CylinderShape3D_xo3ru")
