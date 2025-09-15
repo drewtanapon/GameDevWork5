@@ -95,7 +95,7 @@ skeleton = NodePath("../MeshInstance3D")
 curve = SubResource("Curve3D_0ha60")
 
 [node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath"]
-transform = Transform3D(-0.999862, 5.89087e-05, 0.0166094, -1.81899e-12, 0.999992, -0.00354668, -0.0166095, -0.00354619, -0.999854, 20.7971, 1.59473, -18.5636)
+transform = Transform3D(-0.999862, 5.89052e-05, 0.0166082, -1.81899e-12, 0.999992, -0.00354672, -0.0166083, -0.00354623, -0.999854, 20.7971, 1.59473, -18.5636)
 
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 0.5
