@@ -12,6 +12,7 @@ height = 1.57544
 radius = 0.958496
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.987688, 0.156434, 0, -0.156434, 0.987688, 0, 0.35, 0)
 collision_mask = 6
 script = ExtResource("1_hjaqi")
 
