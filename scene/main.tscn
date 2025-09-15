@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bpgwsghv07syr"]
+[gd_scene load_steps=13 format=3 uid="uid://bpgwsghv07syr"]
 
 [ext_resource type="PackedScene" uid="uid://b3mbcec7yqvyk" path="res://scene/player.tscn" id="1_itxqv"]
 [ext_resource type="Script" uid="uid://c2hv2k6lj23k7" path="res://script/main.gd" id="1_wp4xf"]
 [ext_resource type="PackedScene" uid="uid://ciusbjwox0gb0" path="res://scene/mob.tscn" id="2_brvut"]
+[ext_resource type="FontFile" uid="uid://b3piqs72mg601" path="res://asset/fonts/Montserrat-Medium.ttf" id="4_0ha60"]
+[ext_resource type="Script" uid="uid://dx668yrdc4bhs" path="res://script/score_label.gd" id="5_4j5ol"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_no8bm"]
 size = Vector3(60, 2, 60)
@@ -27,6 +29,10 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
+
+[sub_resource type="Theme" id="Theme_p1hux"]
+default_font = ExtResource("4_0ha60")
+default_font_size = 22
 
 [node name="Main" type="Node"]
 script = ExtResource("1_wp4xf")
@@ -89,11 +95,56 @@ skeleton = NodePath("../MeshInstance3D")
 curve = SubResource("Curve3D_0ha60")
 
 [node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath"]
-transform = Transform3D(-0.999862, 5.89087e-05, 0.0166094, -1.81899e-12, 0.999993, -0.00354668, -0.0166095, -0.00354619, -0.999855, 20.7971, 1.59473, -18.5636)
+transform = Transform3D(-0.999862, 5.89087e-05, 0.0166094, -1.81899e-12, 0.999992, -0.00354668, -0.0166095, -0.00354619, -0.999854, 20.7971, 1.59473, -18.5636)
 
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
+
+[node name="UserInterface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ScoreLabel" type="Label" parent="UserInterface"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 36.0
+offset_right = 102.0
+offset_bottom = 59.0
+theme = SubResource("Theme_p1hux")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Score : 0"
+script = ExtResource("5_4j5ol")
+
+[node name="Retry" type="ColorRect" parent="UserInterface"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 236.0
+offset_top = 243.0
+offset_right = 475.0
+offset_bottom = 243.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.376471)
+
+[node name="Label" type="Label" parent="UserInterface/Retry"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.5
+offset_top = -11.5
+offset_right = 73.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "กด enter เพื่อเริ่มใหม่"
 
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]

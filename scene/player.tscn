@@ -8,8 +8,8 @@ height = 2.42844
 radius = 0.920898
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_hjaqi"]
-height = 0.220703
-radius = 0.795898
+height = 1.57544
+radius = 0.958496
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 collision_mask = 6
@@ -26,12 +26,13 @@ visible = false
 shape = SubResource("CylinderShape3D_xo3ru")
 
 [node name="MobDetector" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.487685, 0)
 collision_layer = 0
 collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MobDetector"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42336, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48423, 0)
 shape = SubResource("CylinderShape3D_hjaqi")
 
 [connection signal="body_entered" from="MobDetector" to="." method="_on_mob_detector_body_entered"]
